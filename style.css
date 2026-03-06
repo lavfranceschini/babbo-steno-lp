@@ -1,0 +1,62 @@
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --font-family: 'Arial', sans-serif;
+  --base-font-size: 16px;
+  --transition-time: 0.3s;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--base-font-size);
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin: 20px;
+  transition: transform var(--transition-time);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+  .card {
+    margin: 10px;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn var(--transition-time) forwards;
+}
