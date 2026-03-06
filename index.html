@@ -207,11 +207,15 @@
 
   <!-- ======================== FOOTER ======================== -->
   <footer class="footer">
-    <div class="container footer__inner">
-      <p>© 2025 Stefano Scaloni · Tutti i diritti riservati</p>
-      <p>Pubblicato da <strong>Gruppo Albatros Il Filo</strong> · ISBN: 9791223612484</p>
-    </div>
-  </footer>
+  <div class="container footer__inner">
+    <p>© <span id="copyright-year"></span> Stefano Scaloni · Tutti i diritti riservati</p>
+    <p>Pubblicato da <strong>Gruppo Albatros Il Filo</strong> · ISBN: 9791223612484</p>
+  </div>
+
+  <script>
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+  </script>
+</footer>
 
 </body>
 </html>
