@@ -76,13 +76,27 @@ h1, h2, h3 {
   letter-spacing: 0.5px;
 }
 .btn--primary {
-  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+  background: var(--gold);
   color: var(--navy);
-  box-shadow: 0 4px 16px rgba(212, 168, 67, 0.45);
+  box-shadow: 0 4px 16px rgba(212, 168, 67, 0.35);
+  position: relative;
+  overflow: hidden;
 }
+.btn--primary::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: rgba(255,255,255,0.25);
+  transform: skewX(-20deg);
+  transition: left 0.4s ease;
+}
+.btn--primary:hover::after { left: 150%; }
 .btn--primary:hover {
+  background: var(--gold-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(212, 168, 67, 0.55);
+  box-shadow: 0 6px 20px rgba(212, 168, 67, 0.45);
 }
 .btn--large {
   padding: 20px 56px;
@@ -147,33 +161,29 @@ h1, h2, h3 {
 }
 .hero__price strong { color: var(--gold); }
 .hero__book {
-  transform: perspective(1000px) rotateY(-8deg);
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  transform: rotate(2deg);
   transition: var(--transition);
 }
-.hero__book:hover {
-  transform: perspective(1000px) rotateY(0deg);
-}
-.hero__book img {
-  border-radius: 4px 12px 12px 4px;
-  box-shadow: -12px 12px 40px rgba(0,0,0,0.4);
-}
+.hero__book:hover { transform: rotate(0deg) scale(1.02); }
 
-/* === 7. PROBLEMA === */
+/* === 7. PROBLEM === */
 .problem {
-  background: var(--white);
+  background: var(--parchment);
   padding: 80px 0;
 }
 .problem__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 28px;
   margin-bottom: 48px;
 }
 .problem__card {
-  background: var(--parchment);
-  padding: 32px 24px;
+  background: var(--white);
+  border-left: 4px solid var(--terracotta);
   border-radius: var(--radius);
-  text-align: center;
+  padding: 32px 24px;
   box-shadow: var(--shadow);
   transition: var(--transition);
 }
@@ -283,12 +293,18 @@ h1, h2, h3 {
   font-size: 0.85rem;
   color: var(--text-light);
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 .value__amount {
   font-family: var(--font-heading);
-  font-size: 1.8rem;
-  color: var(--navy);
+  font-size: 2rem;
   font-weight: 700;
+  color: var(--navy);
+}
+.value__price-divider {
+  color: var(--gold);
+  font-size: 2rem;
+  font-weight: 300;
 }
 
 /* === 10. RECENSIONI === */
@@ -303,25 +319,53 @@ h1, h2, h3 {
 }
 .reviews__card {
   background: var(--parchment);
-  padding: 32px 28px;
   border-radius: var(--radius);
+  padding: 32px;
   box-shadow: var(--shadow);
+  position: relative;
+  transition: var(--transition);
 }
-.reviews__stars {
+.reviews__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(27, 42, 74, 0.12);
+}
+.reviews__quote-mark {
+  font-family: var(--font-heading);
+  font-size: 5rem;
+  line-height: 1;
   color: var(--gold);
-  font-size: 1.1rem;
-  margin-bottom: 16px;
+  opacity: 0.4;
+  position: absolute;
+  top: 8px;
+  left: 20px;
 }
-.reviews__text {
+.reviews__card p {
+  padding-top: 32px;
   font-style: italic;
   color: var(--text);
-  margin-bottom: 16px;
-  line-height: 1.6;
+  margin-bottom: 20px;
 }
 .reviews__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.reviews__avatar {
+  width: 36px;
+  height: 36px;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 700;
-  color: var(--navy);
   font-size: 0.9rem;
+  flex-shrink: 0;
+}
+.reviews__author strong {
+  font-size: 0.9rem;
+  color: var(--navy);
 }
 
 /* === 11. AUTORE === */
